@@ -66,31 +66,31 @@ function freight_train {
   expect $the_train to_be "<HHHH::|____|::|____|::|____|"
 }
 
-function fill_first_freight_car {
-  it "fills the first empty car starting from the front of the train"
+function load_first_freight_car {
+  it "loads the first empty car starting from the front of the train"
   choochoo 'HCCC' 
-  fill_the_next_car 
+  load_the_next_car 
   expect $the_train to_be "<HHHH::|^^^^|::|____|::|____|"
 }
 
-function fill_second_freight_car {
-  it "fills the second empty car starting from the front of the train"
+function load_second_freight_car {
+  it "loads the second empty car starting from the front of the train"
   the_train="<HHHH::|^^^^|::|____|::|____|"
-  fill_the_next_car 
+  load_the_next_car 
   expect $the_train to_be "<HHHH::|^^^^|::|^^^^|::|____|"
 }
 
-function fill_last_freight_car {
-  it "fills the last empty car starting from the front of the train"
+function load_last_freight_car {
+  it "loads the last empty car starting from the front of the train"
   the_train="<HHHH::|^^^^|::|^^^^|::|____|"
-  fill_the_next_car 
+  load_the_next_car 
   expect $the_train to_be "<HHHH::|^^^^|::|^^^^|::|^^^^|"
 }
 
-function attempt_to_fill_freight_car_when_train_is_full {
-  it "reports an error on attempt to fill freight car when train is full"
+function attempt_to_load_freight_car_when_train_is_full {
+  it "reports an error on attempt to load freight car when train is full"
   the_train="<HHHH::|^^^^|::|^^^^|::|^^^^|"
-  fill_the_next_car 
+  load_the_next_car 
   expect $trainwreck to_be 'the train is already full'
 }
 
@@ -100,10 +100,10 @@ function assemble_mixed_train {
   expect $the_train to_be "<HHHH::|OOOO|::|____|::|OOOO|::|____|"
 }
 
-function fill_first_freight_car_on_a_mixed_train {
-  it "fills the first freight car on a mixed train"
+function load_first_freight_car_on_a_mixed_train {
+  it "loads the first freight car on a mixed train"
   choochoo "HPCPC" 
-  fill_the_next_car 
+  load_the_next_car 
   expect $the_train to_be "<HHHH::|OOOO|::|^^^^|::|OOOO|::|____|"
 }
 
@@ -120,14 +120,14 @@ describe "A passenger train"
 
 describe "A freight train"  
   freight_train
-  fill_first_freight_car
-  fill_second_freight_car
-  fill_last_freight_car
-  attempt_to_fill_freight_car_when_train_is_full
+  load_first_freight_car
+  load_second_freight_car
+  load_last_freight_car
+  attempt_to_load_freight_car_when_train_is_full
 
 describe "A mixed passenger and freight train"  
   assemble_mixed_train
-  fill_first_freight_car_on_a_mixed_train
+  load_first_freight_car_on_a_mixed_train
 
 print_trailer
 

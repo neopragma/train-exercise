@@ -51,7 +51,7 @@ function detach_first {
   fi
 }
 
-function fill_the_next_car {
+function load_the_next_car {
   if [[ "$the_train" =~ "____" ]]; then
   the_train="${the_train/____/^^^^}" 
 else
