@@ -9,13 +9,12 @@ This is a programming exercise based on the one presented here: https://github.c
 1. Trains always "move" right-to-left. Nothing in the test cases suggests otherwise. So, the left-hand end of the string represents the front of the train in all cases. 
 2. "Fill" always changes an entire freight car in a single go, not character-by-character. Cars are always filled front-to-back on the train. 
 
-## Issues with the Exercise
+## Solutions
 
-- As this is a coding challenge or kata and the "requirements" are expressed _via_ the unit-level examples, it's okay that the programmer is given several examples at once. In "real life" (whatever _that_ means) when using classic-style TDD we would write exactly one failing test case at a time. It might be useful to mention this in the instructions, in case a novice practitioner of TDD or of unit testing should get the wrong idea when they see multiple examples presented at once.
-- If this is meant as a classic-style TDD exercise, then it is an error to give the programmer any production code whatsoever as a starting point. There should be only test cases (unit-level examples). As presented, a mostly-empty Java class is given. However, no test case has yet "forced" the programmer to create a class, and the process of emergent design has not revealed any domain objects that one might wish to represent as classes. When doing code katas, it's useful for us to pretend we don't already know that _train_ will be a domain object, so that we can practice the _technique_ of emergent design. The goal isn't to create an ASCII train, but to practice technique. In addition, the exercise can be more broadly useful if no source language is assumed. Not all source languages have "classes."
-- The instructions state that when an error occurs an exception should be thrown. However, not all languages handle errors by throwing exceptions. To avoid coupling the unit test suite with the implementation at too low a level, it might be advisable to assert that the application follows whatever error-handling conventions have been agreed by the team or defined in the organization where the team works. Granted, it is difficult to avoid this degree of coupling with implementation while still having a useful unit test suite. If some degree of abstraction is feasible, it might be worth considering. For Java in particular, asking programmers to throw exceptions on a one-off basis, without any sort of structure for exception-handling across the whole application or the whole production environment, invites anti-patterns like "swallowed" exceptions, stack traces that are visible to end users, and meaningless or hard-to-understand log messages. There is no value in practicing such anti-patterns in a code kata.
-- Some of the examples include more than one behavior, and more than one logical assertion. This is an error in unit test design. Whether it includes TDD and emergent design or not, any programming exercise that includes unit tests should address unit test design.
-- There's a strong emphasis in the industry today on _naming_ and on structuring test suites in a way that helps people understand what the application does. In the examples, the _modifyTrain()_ test method calls _detachHead()_ and _detachEnd()_ methods (yes, two different behaviors expressed in the same example). "Head" and "end" are not corresponding words in English. One could say "head" and "tail," or "beginning" and "end," or "front" and "back," or "leading" and "trailing," or any other word pair that goes together fluidly. The name _modifyTrain()_ is not expressive of the behavior of the application. In addition, the write-up describes a freight train as a "cargo train," which is not the correct (or at least, not the common) terminology. Finally, the original version talks about "filling" the train. The correct term is "loading" the train. In "real life," when people are careless with names in that way, it indicates they have not understood the problem domain adequately. Whether it includes TDD and emergent design or not, taking care with names should be part of any programming exercise.
+- [Issues with the exercise](issues.md)
+
+
+
 
 ## Bash solution 
 
@@ -125,8 +124,7 @@ A mixed passenger and freight train
 
 I think both the test source and the test output are more descriptive of the application's behavior than the original version. I also think this sort of thing should be part of any TDD-based or unit test-based code kata. The structure and naming of the examples are important factors in the overall quality of the code base, and should be practiced along with other basic development skills. 
 
-## Next steps 
+### Next steps 
 
-For the bash solution, we could develop a console UI based on the bash _dialog_ feature to enable users to build different kinds of trains. We could also add functionality such as unloading a freight train, or having passengers open and close their windows. More generally, we could do the exercise in other languages, to see how it "feels" to emerge a design in those languages. 
-
+For the bash solution, we could develop a console UI based on the bash _dialog_ feature to enable users to build different kinds of trains. We could also add functionality such as unloading a freight train, or having passengers open and close their windows. 
 
