@@ -30,12 +30,12 @@ print_header train
 passenger_train
 restaurant_train
 freight_train
-fill_first_freight_car
-fill_second_freight_car
-fill_last_freight_car
-attempt_to_fill_freight_car_when_train_is_full
+load_first_freight_car
+load_second_freight_car
+load_last_freight_car
+attempt_to_load_freight_car_when_train_is_full
 assemble_mixed_train
-fill_first_freight_car_on_a_mixed_train
+load_first_freight_car_on_a_mixed_train
 double_headed_train 
 detach_last_car 
 detach_first_car
@@ -50,12 +50,12 @@ Examples for train
      PASS: it assembles a passenger train
      PASS: it assembles a restaurant train
      PASS: it assembles an empty freight train
-     PASS: it fills the first empty car starting from the front of the train
-     PASS: it fills the second empty car starting from the front of the train
-     PASS: it fills the last empty car starting from the front of the train
-     PASS: it reports an error on attempt to fill freight car when train is full
+     PASS: it loads the first empty car starting from the front of the train
+     PASS: it loads the second empty car starting from the front of the train
+     PASS: it loads the last empty car starting from the front of the train
+     PASS: it reports an error on attempt to load freight car when train is full
      PASS: it assembles a train containing passenger cars and freight cars
-     PASS: it fills the first freight car on a mixed train
+     PASS: it loads the first freight car on a mixed train
      PASS: it assembles a double-headed train
      PASS: it detaches the last car of the train (right)
      PASS: it detaches the first car of the train (left)
@@ -81,14 +81,14 @@ describe "A passenger train"
 
 describe "A freight train"  
   freight_train
-  fill_first_freight_car
-  fill_second_freight_car
-  fill_last_freight_car
-  attempt_to_fill_freight_car_when_train_is_full
+  load_first_freight_car
+  load_second_freight_car
+  load_last_freight_car
+  attempt_to_load_freight_car_when_train_is_full
 
 describe "A mixed passenger and freight train"  
   assemble_mixed_train
-  fill_first_freight_car_on_a_mixed_train
+  load_first_freight_car_on_a_mixed_train
 
 print_trailer
 ```
@@ -109,14 +109,14 @@ A passenger train
 
 A freight train
      PASS: it assembles an empty freight train
-     PASS: it fills the first empty car starting from the front of the train
-     PASS: it fills the second empty car starting from the front of the train
-     PASS: it fills the last empty car starting from the front of the train
-     PASS: it reports an error on attempt to fill freight car when train is full
+     PASS: it loads the first empty car starting from the front of the train
+     PASS: it loads the second empty car starting from the front of the train
+     PASS: it loads the last empty car starting from the front of the train
+     PASS: it reports an error on attempt to load freight car when train is full
 
 A mixed passenger and freight train
      PASS: it assembles a train containing passenger cars and freight cars
-     PASS: it fills the first freight car on a mixed train
+     PASS: it loads the first freight car on a mixed train
 
 12 examples were run
 12 passed
