@@ -125,5 +125,8 @@ A mixed passenger and freight train
 
 I think both the test source and the test output are more descriptive of the application's behavior than the original version. I also think this sort of thing should be part of any TDD-based or unit test-based code kata. The structure and naming of the examples are important factors in the overall quality of the code base, and should be practiced along with other basic development skills. 
 
+## Next steps 
+
+For the bash solution, we could develop a console UI based on the bash _dialog_ feature to enable users to build different kinds of trains. We could also add functionality such as unloading a freight train, or having passengers open and close their windows. More generally, we could do the exercise in other languages, to see how it "feels" to emerge a design in those languages. 
 
 
