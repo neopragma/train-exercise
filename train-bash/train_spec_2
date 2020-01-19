@@ -1,0 +1,134 @@
+#!/bin/bash
+#==================================================================================
+# Specs for ASCII art train problem
+# See https://github.com/gehel/exo-train
+# @davenicolette 
+# 16 Jan 2020
+#==================================================================================
+. ./bash_spec
+. ./train
+
+# Cleaned-up original examples (one assertion per) with no additional functionality,
+# organized for readability.
+
+function describe {
+  echo -e "\n$1"
+}
+
+function passenger_train {
+  it "assembles a passenger train"
+  choochoo 'HPP'
+  expect $the_train to_be '<HHHH::|OOOO|::|OOOO|'
+}
+
+function restaurant_train {
+  it "assembles a restaurant train" 
+  choochoo 'HPRP'
+  expect $the_train to_be '<HHHH::|OOOO|::|hThT|::|OOOO|'
+}
+
+function double_headed_train {
+  it "assembles a double-headed train"
+  choochoo 'HPRPH'
+  expect $the_train to_be '<HHHH::|OOOO|::|hThT|::|OOOO|::HHHH>'
+}
+
+# One of the original examples is modifyTrain().
+# It contains two distinct examples and should be two separate test cases, as here.
+# Also, detachEnd() and detachHead() are not natural opposites in English. 
+# A more meaningful naming convention is advisable. Here we say 'first' and 'last'.
+
+function detach_last_car {
+  it "detaches the last car of the train (right)"
+  choochoo 'HPRPH'
+  detach_last
+  expect $the_train to_be '<HHHH::|OOOO|::|hThT|::|OOOO|'
+}
+
+function detach_first_car {
+  it "detaches the first car of the train (left)"
+  choochoo 'HPRPH'
+  detach_first
+  expect $the_train to_be '|OOOO|::|hThT|::|OOOO|::HHHH>'
+}
+
+# Two of the original examples are cargoTrain() and mixedTrain(). 
+# They contain multiple cases and multiple assertions. 
+# They should be broken down into multiple test cases, as here. 
+# The term 'cargo train' is used in the original version. 
+# Clarification of the terms 'cargo' and 'freight' is available here: 
+# https://www.differencebetween.com/difference-between-cargo-and-freight/
+# The correct term for a train is 'freight train'. We will use that term here.
+
+function freight_train {
+  it "assembles an empty freight train"
+  choochoo 'HCCC'
+  expect $the_train to_be "<HHHH::|____|::|____|::|____|"
+}
+
+function fill_first_freight_car {
+  it "fills the first empty car starting from the front of the train"
+  choochoo 'HCCC' 
+  fill_the_next_car 
+  expect $the_train to_be "<HHHH::|^^^^|::|____|::|____|"
+}
+
+function fill_second_freight_car {
+  it "fills the second empty car starting from the front of the train"
+  the_train="<HHHH::|^^^^|::|____|::|____|"
+  fill_the_next_car 
+  expect $the_train to_be "<HHHH::|^^^^|::|^^^^|::|____|"
+}
+
+function fill_last_freight_car {
+  it "fills the last empty car starting from the front of the train"
+  the_train="<HHHH::|^^^^|::|^^^^|::|____|"
+  fill_the_next_car 
+  expect $the_train to_be "<HHHH::|^^^^|::|^^^^|::|^^^^|"
+}
+
+function attempt_to_fill_freight_car_when_train_is_full {
+  it "reports an error on attempt to fill freight car when train is full"
+  the_train="<HHHH::|^^^^|::|^^^^|::|^^^^|"
+  fill_the_next_car 
+  expect $trainwreck to_be 'the train is already full'
+}
+
+function assemble_mixed_train {
+  it "assembles a train containing passenger cars and freight cars"
+  choochoo "HPCPC" 
+  expect $the_train to_be "<HHHH::|OOOO|::|____|::|OOOO|::|____|"
+}
+
+function fill_first_freight_car_on_a_mixed_train {
+  it "fills the first freight car on a mixed train"
+  choochoo "HPCPC" 
+  fill_the_next_car 
+  expect $the_train to_be "<HHHH::|OOOO|::|^^^^|::|OOOO|::|____|"
+}
+
+print_header train 
+
+describe "General train assembly"
+  double_headed_train 
+  detach_last_car 
+  detach_first_car
+
+describe "A passenger train"
+  passenger_train
+  restaurant_train
+
+describe "A freight train"  
+  freight_train
+  fill_first_freight_car
+  fill_second_freight_car
+  fill_last_freight_car
+  attempt_to_fill_freight_car_when_train_is_full
+
+describe "A mixed passenger and freight train"  
+  assemble_mixed_train
+  fill_first_freight_car_on_a_mixed_train
+
+print_trailer
+
+exit 0

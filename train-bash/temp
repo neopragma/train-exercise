@@ -1,0 +1,56 @@
+#!/bin/bash
+
+#first car
+
+the_train="<HHHH::|OOOO|::|hThT|::|OOOO|::HHHH>" 
+
+first_car="^[^:]*"
+
+if [[ $the_train =~ $first_car ]]; then 
+  the_train="${the_train:${#BASH_REMATCH[0]}+2}" # length of 1st car plus length of coupling
+else 
+  echo 'first car of the train was not found'
+fi
+
+echo "the_train is $the_train"
+
+# last car
+
+the_train="<HHHH::|OOOO|::|hThT|::|OOOO|::HHHH>" 
+
+last_car="(.*)::"
+
+if [[ $the_train =~ $last_car ]]; then
+  the_train="${BASH_REMATCH[0]}"            # last car except coupling
+  the_train="${the_train::${#the_train}-2}" # remove coupling
+else 
+  echo 'last car of the train was not found'
+fi    
+
+echo "the_train is $the_train"
+
+#----------
+
+train_full='the train is already full'
+test1="XXXX|____|::|____|XXXX"
+echo "before: $test1"
+if [[ "$test1" =~ "____" ]]; then
+  test1="${test1/____/^^^^}" 
+  echo "after 1st: $test1"
+else
+  echo "$train_full"
+fi  
+if [[ "$test1" =~ "____" ]]; then
+  test1="${test1/____/^^^^}" 
+  echo "after 2nd: $test1"
+else
+  echo "$train_full"
+fi  
+if [[ "$test1" =~ "____" ]]; then
+  test1="${test1/____/^^^^}" 
+  echo "after 3rd: $test1"
+else
+  echo "$train_full"
+fi  
+
+

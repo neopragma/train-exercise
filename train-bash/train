@@ -1,0 +1,77 @@
+#!/bin/bash
+#==================================================================================
+# Bash solution for ASCII art train problem
+# See https://github.com/gehel/exo-train
+# @davenicolette 
+# 16 Jan 2020
+#==================================================================================
+
+function C {
+  a_car="|____|"
+}
+
+function H {
+  a_car="HHHH"
+}
+
+function P {
+  a_car="|OOOO|"	
+}
+
+function R {
+  a_car="|hThT|"
+}
+
+function coupling {
+  a_coupling=	
+  [ -n "$the_train" ] && a_coupling='::'
+}
+
+function cow_catcher {	
+  [ ${the_train:0:1} = 'H' ] && the_train="<$the_train" 
+  [ ${the_train:${#the_train}-1:1} = 'H' ] && the_train="$the_train>" 
+}
+
+function detach_last {
+  last_car="(.*)::"
+  if [[ $the_train =~ $last_car ]]; then
+    the_train="${BASH_REMATCH[0]}"            # last car except coupling
+    the_train="${the_train::${#the_train}-2}" # remove coupling
+  else 
+    trainwreck='last car of the train was not found'
+  fi    
+}
+
+function detach_first {
+  first_car="^[^:]*"
+  if [[ $the_train =~ $first_car ]]; then 
+    the_train="${the_train:${#BASH_REMATCH[0]}+2}" # length of 1st car plus length of coupling
+  else 
+    trainwreck='first car of the train was not found'
+  fi
+}
+
+function fill_the_next_car {
+  if [[ "$the_train" =~ "____" ]]; then
+  the_train="${the_train/____/^^^^}" 
+else
+  trainwreck='the train is already full'
+fi  
+
+}
+
+function choochoo {
+  trainwreck=
+  the_train=
+  input_string="$1"
+  for (( i=0; i<${#input_string}; i++ )); do
+    "${input_string:$i:1}"
+    coupling
+    the_train="$the_train$a_coupling$a_car"
+  done
+  cow_catcher
+}
+
+IFS='
+'
+trainwreck='no train has been created yet'
