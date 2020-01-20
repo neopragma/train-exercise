@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/Train.fsproj": {}
+  },
+  "projects": {
+    "/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/Train.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/Train.fsproj",
+        "projectName": "Train",
+        "projectPath": "/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/Train.fsproj",
+        "packagesPath": "/Users/connexxo/.nuget/packages/",
+        "outputPath": "/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/connexxo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "FSharp.Core": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

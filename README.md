@@ -13,5 +13,6 @@ This is a programming exercise based on the one presented here: https://github.c
 
 - [Issues with the exercise](issues.md)
 - [Bash solution](bash-solution.md)
+- [F# solution](fsharp-solution.md)
 
 

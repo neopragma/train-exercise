@@ -1,0 +1,8 @@
+/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/bin/Debug/netstandard2.0/Train.deps.json
+/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/bin/Debug/netstandard2.0/Train.dll
+/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/bin/Debug/netstandard2.0/Train.pdb
+/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/obj/Debug/netstandard2.0/Train.fsprojAssemblyReference.cache
+/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/obj/Debug/netstandard2.0/Train.AssemblyInfoInputs.cache
+/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/obj/Debug/netstandard2.0/Train.AssemblyInfo.fs
+/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/obj/Debug/netstandard2.0/Train.dll
+/Users/connexxo/Documents/Projects/train-exercise/train-fsharp/Train/obj/Debug/netstandard2.0/Train.pdb
